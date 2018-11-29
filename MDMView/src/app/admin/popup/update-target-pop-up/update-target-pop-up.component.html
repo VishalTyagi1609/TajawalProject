@@ -1,0 +1,102 @@
+
+    
+  <h2>Monthly Target Update</h2> 
+<div class="modal-body">
+  <i *ngIf="flag" style="color:red">Please enter a valid number between 0 and 999999999</i>
+  <div class="row">
+      <div class="col-4">
+        <div class="form-group">
+          <label for="Enter search string">Brand</label>
+          <input class="form-control"   type="text" min="1" [(ngModel)]="target.brand" title={{target.brand}} readonly="" >
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="form-group">
+          <label for="Enter search string">Year</label>
+          <input type="text" class="form-control"  [(ngModel)]="target.Year" readonly="">
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="form-group">
+          <label for="Enter search string">Month</label>
+          <input type="text" class="form-control" id="#" [(ngModel)]="target.month" readonly="">
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="form-group">
+          <label for="Enter search string">Product</label>
+          <input type="text" class="form-control" id="#" [(ngModel)]="target.Product" readonly="">
+        </div>
+      </div>
+
+      <div class="col-4">
+        <div class="form-group">
+          <label for="Enter search string">Budget</label>
+          <input type="text" class="form-control" type="number"  (keyup)="validateValue('Budget')" min=0 max=100 step=5 id="#" [(ngModel)]="target.Budget">
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="form-group">
+          <label for="Enter search string">Bookings</label>
+          <input type="text" class="form-control" id="#" type="number" (keyup)="validateValue('Bookings')" [(ngModel)]="target.Bookings">
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="form-group">
+          <label for="Enter search string">IBV</label>
+          <input type="text" class="form-control" id="#" type="number" (keyup)="validateValue('ibv')" [(ngModel)]="target.ibv">
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="form-group">
+          <label for="Enter search string">NBV</label>
+          <input type="text" class="form-control" id="#" type="number" (keyup)="validateValue('nbv')"[(ngModel)]="target.nbv">
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="form-group">
+          <label for="Enter search string">AOV</label>
+          <input type="text" class="form-control" id="#" type="number" (keyup)="validateValue('aov')" [(ngModel)]="target.aov">
+        </div>
+      </div>
+  </div>
+
+   <div class="row">
+     <div class="col-12"><hr/></div>
+      <div class="col-4">
+        <div class="form-group">
+          <label for="Enter search string">GBV(Estimated)</label>
+          <input type="text" class="form-control" id="#" [(ngModel)]="target.gbv" readonly="">
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="form-group">
+          <label for="Enter search string">CPO</label>
+          <input type="text" class="form-control" id="#" [(ngModel)]="target.cpo" readonly="">
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="form-group">
+          <label for="Enter search string">CRR Total</label>
+          <input type="text" class="form-control" id="#" type="number" [(ngModel)]="target.crrTotal" (keyup)="validateValue('crrTotal')">
+        </div>
+      </div>
+
+      <div class="col-4">
+        <div class="form-group">
+          <label for="Enter search string">IBV Online total Flights and Hotels</label>
+          <input type="text" class="form-control" id="#" [(ngModel)]="target.ibvOnlineTotalFlightsAndHotels" readonly="">
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="form-group">
+          <label for="Enter search string">NBV Online total Flights and Hotels</label>
+          <input type="text" class="form-control" id="#" [(ngModel)]="target.nbvOnlineTotalTFlightsAndHotels" readonly="">
+        </div>
+      </div>
+
+      
+    </div>
+    <button mat-button matDialogClose="close"  class="btn btn-primary" (click)="onCloseClick()" style='float: right;margin: 5px'>Cancel</button>
+    <button *ngIf="!flag" mat-button matDialogClose="close"  class="btn btn-primary" (click)="onUpdateClick()" style='float: right;margin: 5px'>Confirm Update</button>
+  </div>

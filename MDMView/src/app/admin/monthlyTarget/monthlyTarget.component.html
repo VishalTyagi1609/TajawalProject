@@ -1,0 +1,107 @@
+
+
+<div class="container-fluid">
+<h2>Monthly Target</h2>          
+
+<div>
+  <div *ngIf="toggleFlag==1" >
+<div class="row desc">
+  <div class="col-3">
+    <label for="Enter search string">Brand</label>
+    <select class="custom-select"  #selectedBrand>
+      <!--option>Select</option-->
+      <option *ngFor="let list of brand" [value]="list">
+        {{list}}
+      </option>                 
+    </select>
+    <!--h6 *ngIf="selectNetworkTypeFlag" style="color: red;margin: 10px">Select Brand </h6-->
+  </div>
+  
+  
+  <div class="col-3">
+    <label for="Enter search string">Year</label>
+    <select class="custom-select" #selectedYear>
+      <!--option>Select</option-->
+      <option *ngFor="let list of year" [value]="list">
+        {{list}}
+      </option>                 
+    </select>
+    <!--h6 *ngIf="selectNetworkTypeFlag" style="color: red;margin: 10px">Select Year</h6-->
+  </div>
+
+  <div class="col-3">
+    <label for="Enter search string">Month</label>
+    <select class="custom-select" #selectedMonth>
+      <!--option>Select</option-->
+      <option *ngFor="let list of month" [value]="list">
+        {{list}}
+      </option>                 
+    </select>
+    <!--h6 *ngIf="selectNetworkTypeFlag" style="color: red;margin: 10px">Select Month</h6-->
+  </div>
+  <div class="col-3">
+    
+    <button mat-button  class="btn btn-primary" (click)="searchTargets()" style='margin: 5px; margin-top: 30px; margin-bottom: 50px'>Search</button>
+
+  </div>
+</div>
+
+</div>
+</div>
+
+<!--section *ngIf=true-->
+  <!--div style="overflow: auto;  width: 100%;  height: 500px"-->
+  <div>
+  <!--table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-striped table-bordered text-center"-->
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class=" table-striped table-bordered text-left  " style='table-layout:fixed;width: 100%'>
+    <thead >
+      <tr>
+        <th >Product</th>
+        <th >Budget</th>
+        <th >Bookings</th>
+        <th >IBV</th>
+        <th >NBV </th>
+        <th >AOV</th>
+        <th >GBV</th>       
+        <th >CPO</th>
+        <th >CRR Total</th>       
+        <th >Action</th>
+      </tr>
+    </thead>
+    <tbody >
+      <tr *ngFor="let targets of monthlyTargetList; let i= index;">
+        <!--td>{{ hotel.id }}</td-->
+        <td>{{ targets.Product }}</td>
+        <td>{{ targets.Budget }}</td>
+        <td>{{ targets.Bookings }}</td>
+        <td>{{ targets.ibv }}</td>
+        <td>{{ targets.nbv }}</td>
+        <td>{{ targets.aov }}</td>
+        <td>{{ targets.gbv }}</td>
+        <td>{{ targets.cpo }}</td>
+        <td>{{ targets.crrTotal }}</td>           
+          <td>
+          <button type="button" [disabled]='' class="btn btn-primary px-3 py-1" data-toggle="modal" (click)="updatetarget(i)" style='width: 80px;display: block;margin: auto;'>Update</button> 
+          </td>
+      </tr>
+      <tr *ngIf=false>
+        <td colspan="2" class="no-data-available">No matching record found</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<!--/section-->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

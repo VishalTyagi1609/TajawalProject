@@ -1,0 +1,39 @@
+
+    
+  <h2>Visa Fraud Update</h2> 
+<div class="modal-body">
+  <div class="row">
+      <div class="col-4">
+        <div class="form-group">
+          <label for="Enter search string">Dim Customer Id</label>
+          <input class="form-control"   type="text" min="1" [(ngModel)]="target.dim_customer_id" title={{target.dim_customer_id}} readonly="" >
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="form-group">
+          <label for="Enter search string">First Order Date</label>
+          <input type="text" class="form-control"  [(ngModel)]="target.first_order_date" readonly="">
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="form-group">
+          <label for="Enter search string">First Order No</label>
+          <input type="text" class="form-control" id="#" [(ngModel)]="target.first_order_no" readonly="">
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="form-group">
+          <label for="Enter search string">Visa Fraud Status</label>
+          <select class="custom-select" #status>
+            <option selected>{{target.visa_fraud}}</option>
+            <option value={{visaStatus}}>{{visaStatus}}</option>
+          </select>
+        </div>
+      </div>
+      
+  </div>
+
+   
+    <button mat-button matDialogClose="close"  class="btn btn-primary" (click)="onCloseClick()" style='float: right;margin: 5px'>Cancel</button>
+    <button *ngIf="!flag" mat-button matDialogClose="close"  class="btn btn-primary" (click)="onUpdateClick()" style='float: right;margin: 5px'>Confirm Update</button>
+  </div>

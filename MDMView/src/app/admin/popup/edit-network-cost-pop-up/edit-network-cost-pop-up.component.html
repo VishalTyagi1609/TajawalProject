@@ -1,0 +1,59 @@
+<h3 text-align: style='text-align: center;font-weight: bold;'> Update network cost</h3>
+  <table class="table" >
+     
+   <tr >
+     <td >Network</td>
+    <td>
+     {{network.adnetwork_name}}
+    </td>
+    </tr>
+    
+     <tr >
+           <td>Date</td>
+               <td>
+          {{network.date}} 
+        </td>
+    </tr>
+  
+      <tr >
+          <td >MetricName</td>
+         <td>
+           {{network.metric_name}} 
+    </td>
+  </tr>
+  
+     <tr >
+          <td >Brand</td>
+         <td>
+            {{network.brand}}
+        </td> 
+    </tr>
+    <tr>
+           <td >Type</td>
+               <td>
+              {{network.type}}
+               </td>
+    </tr>
+    <tr>
+      <td >Product</td>
+          <td>
+         {{network.product}}
+          </td>
+    </tr>
+    <tr>
+      <td >Mobile OS</td>
+          <td>
+         {{network.mobile_os}}
+          </td>
+    </tr> 
+      <tr >
+          <td >MetricValue</td>
+         <td>
+            <input class="form-control"  type="number" (keyup)="validateValue()" [maxlength]="4" [(ngModel)]="network.value" title={{network.value}}>
+            <i *ngIf="valueFlag" style="color:red">Please enter a valid number > 0 and < 100</i>
+  </td>
+  </tr>
+  
+  </table>
+  <button mat-button matDialogClose="close"  class="btn btn-primary" (click)="onCloseClick()" style='float: right;margin: 5px'>Cancel</button>
+  <button *ngIf="!valueFlag" mat-button matDialogClose="close"  class="btn btn-primary" (click)="onUpdateClick()" style='float: right;margin: 5px'>Confirm update</button>

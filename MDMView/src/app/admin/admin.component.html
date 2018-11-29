@@ -1,0 +1,168 @@
+
+<!--<table-overview-example></table-overview-example>
+<div>
+        <h1>ADMIN module</h1>
+        <router-outlet></router-outlet>
+</div>-->
+
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Collapsible sidebar using Bootstrap 3</title>
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.2.5/css/select.bootstrap4.min.css">
+    <!-- Our Custom CSS 
+    <link rel="stylesheet" href="css/style4.css">-->
+  </head>
+  
+    <div class="wrapper">
+      <!-- Sidebar Holder -->
+      <nav id="sidebar">
+        <div class="sidebar-header">
+          <h3><a class="navbar-brand" href="index.html"><img src="assets/images/logo.svg" width="122px" height="auto" alt=""></a></h3>
+          <strong><img src="assets/images/min_logo.jpg" width="39px" height="39px" alt=""></strong>
+        </div>
+        <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+          <!--li class="nav-item active" data-toggle="tooltip" data-placement="right" title="Components">
+            <a class="nav-link nav-link-collapse collapsed   active" data-toggle="collapse"  href="#tab1" data-parent="#exampleAccordion">
+              <i class="fa fa-cogs"></i>
+              <span class="nav-link-text">Manage Channel Costs</span>
+            </a>
+            <ul class="sidenav-second-level collapse show " id="tab1">
+              <li>
+                <a href="add_new_cost.html" c>Add new cost</a>
+              </li>
+              <li>
+                <a href="update_cost.html">Update existing cost</a>
+              </li>
+            </ul>
+          </li-->
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+            <a style="cursor: pointer" (click)="hotelToggle()" class="" data-toggle="collapse" data-parent="#exampleAccordion">
+              <i class="fa fa-fw fa-circle" style="font-size:10px;color:red"></i>
+              <span class="nav-link-text" >Manage Hotels</span>
+            </a>
+            <ul *ngIf='hotelToggleFlag' class="sidenav-second-level collapse show" id="tab2">
+              <li  class="active">
+                <a [routerLink]="['/admin/hotel']" routerLinkActive="">Search for hotels</a>
+              </li>
+              <li class="active">
+                <a [routerLink]="['/admin/uploadHotel']" routerLinkActive="">Upload Hotels</a>
+              </li>
+              <!--li class="active">
+                  <a [routerLink]="['/admin/temp']" routerLinkActive="">Temp</a>
+                </li-->
+            </ul>
+          </li>
+          
+          
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+              <a style="cursor: pointer" (click)="channelToggle()" class="" data-toggle="collapse" data-parent="#exampleAccordion">
+                <i class="fa fa-fw fa-circle" style="font-size:10px;color:red"></i>
+                <span class="nav-link-text" >Manage Adjust Cost</span>
+              </a>
+              <ul *ngIf='channelToggleFlag' class="sidenav-second-level collapse show" id="tab2">
+                <li  class="active">
+                  <a [routerLink]="['/admin/networkCostAdd']" routerLinkActive="">Add New Cost</a>
+                </li>
+                <li class="active">
+                  <a [routerLink]="['/admin/networkCostUpdate']" routerLinkActive="">Update Cost</a>
+                </li>
+                <!--li class="active">
+                    <a [routerLink]="['/admin/temp']" routerLinkActive="">Temp</a>
+                  </li-->
+              </ul>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+              <a style="cursor : pointer" (click)="spendChannelToggle()" class="" data-toggle="collapse" data-parent="#exampleAccordion">
+                <i class="fa fa-fw fa-circle" style="font-size:10px;color:red"></i>
+                <span class="nav-link-text" >Channel Mapping</span>
+              </a>
+              <ul *ngIf='spendChannelFlag' class="sidenav-second-level collapse show" id="tab2">
+                <li  class="active">
+                  <a [routerLink]="['/admin/addNewChannel']" routerLinkActive="">Add Channel</a>
+                </li>
+                <li class="active">
+                  <a [routerLink]="['/admin/adjustChannelMapping']" routerLinkActive="">Adjust Network </a>
+                </li>
+                <li class="active">
+                  <a [routerLink]="['/admin/GAChannelMapping']" routerLinkActive="">GA SourceMedium </a>
+                </li>
+                <!--li class="active">
+                    <a [routerLink]="['/admin/temp']" routerLinkActive="">Temp</a>
+                  </li-->
+              </ul>
+            </li>            
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+              <a style="cursor : pointer" (click)="monthlyTarget()" class="" data-toggle="collapse" data-parent="#exampleAccordion">
+                <i class="fa fa-fw fa-circle" style="font-size:10px;color:red"></i>
+                <span class="nav-link-text" >Monthly Target</span>
+              </a>
+             
+            </li> 
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+              <a style="cursor : pointer" (click)="visaFraud()" class="" data-toggle="collapse" data-parent="#exampleAccordion">
+                <i class="fa fa-fw fa-circle" style="font-size:10px;color:red"></i>
+                <span class="nav-link-text" >Visa Fraud</span>
+              </a>
+             
+            </li> 
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+              <a style="cursor : pointer" (click)="suspiciousOrders()" class="" data-toggle="collapse" data-parent="#exampleAccordion">
+                <i class="fa fa-fw fa-circle" style="font-size:10px;color:red"></i>
+                <span class="nav-link-text" >Suspicious Orders</span>
+              </a>
+             
+            </li>
+          
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+              <a style="cursor : pointer" (click)="Users()" class="" data-toggle="collapse" data-parent="#exampleAccordion">
+              <i class="fa fa-fw fa-circle" style="font-size:10px;color:red"></i>
+              <span class="nav-link-text" >Users</span>
+              </a>
+              
+              </li>
+
+           
+        </ul>
+      </nav>
+      
+      <!-- Page Content Holder -->
+      <div id="content" style='overflow: hidden;width: 85%;'>
+        <nav class="navbar navbar-default">
+          <div class="container-fluid pl-0 pr-0">
+            <div class="navbar-header">
+              <a *ngIf=false id="sidebarCollapse" class="btn float-left  ">
+                <i class="fa  fa-bars"></i>
+              </a>
+              
+              <!--button class="nav-link float-right btn" (click)="logoutUser()">Logout</button-->
+              <a  style="cursor: pointer" routerLink="/admin/getUserDetails" class="nav-link float-right btn" >
+                  <i class="fa fa-fw fa-bars">User</i>
+                   </a>
+              <a  style="cursor: pointer" (click)="logoutUser()" class="nav-link float-right btn" >
+              <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+              
+              
+            </div>
+          </div>
+        </nav>
+        <div class="container-fluid">
+          
+                <router-outlet></router-outlet>
+        </div>
+        
+        <footer class="footer">
+          <div class="container">
+            <span class=" text-secondary">Copyrights © 2018 Tajawal. All Rights Reserved</span>
+          </div>
+        </footer>
+      </div>
+    </div>
+    
+  

@@ -1,0 +1,52 @@
+<h4 text-align: style='text-align: center;font-weight: bold;'> Select channel for SourceMedium : {{networkNames}}</h4>
+
+<div class="row">
+  <div class="col-12 my-3">
+      <!--div class="custom-control custom-radio custom-control-inline"-->
+      
+      <!--/div-->
+    <div  class="custom-control custom-radio custom-control-inline  " style="width: 250px;">
+        
+        <table>
+        <tr>
+          <label for="Enter search string">Select ChannelGroup</label>
+        </tr>  
+        <tr>
+        <select class="custom-select" (click)="onGroupSelect()" #channelGroup >
+          <option>Select</option>
+          <option *ngFor="let list of channelGroups" [value]="list">
+            {{list}}
+          </option>                 
+        </select>
+        </tr>
+        <tr>
+        <!--div *ngIf='groupSelectFlag'><p style='color: red'>Please select ChannelGroup</p></div-->
+        </tr>
+        </table>
+    </div>
+    <div class="custom-control custom-radio custom-control-inline" style="width: 250px;">
+        
+        <table>
+        <tr>
+            <label for="Enter search string">Select ChannelName</label>
+        </tr>
+        <tr>
+        <select class="custom-select"  (click)="onNameSelect()" #channelName>
+          <!--option>{{name}}</option-->
+          <option *ngFor="let list of channelNames" [value]="list">
+            {{list}}
+          </option>                 
+        </select>
+        </tr>
+        <tr>
+            <!--div *ngIf='nameSelectFlag'><p style='color: red'>Please select Channel Name</p></div-->
+        </tr>
+        </table>
+    </div>
+    <button  mat-button matDialogClose="close"  class="btn btn-primary" (click)="onCloseClick()" style='float: right;margin: 5px; margin-top: 32px'>Cancel</button>
+    <button *ngIf='addButtonFlag' mat-button matDialogClose="close"  class="btn btn-primary" (click)="onAddClick()" style='float: right;margin: 5px; margin-top: 32px'>Update</button>
+
+     </div>
+
+</div>
+ 

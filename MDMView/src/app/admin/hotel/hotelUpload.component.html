@@ -1,0 +1,7 @@
+<h2>Upload Hotels</h2>
+<div class="col-3" *ngIf="!status" >
+    <input *ngIf="localStorageFunc() == 'false'" #uploadfile class="btn px-4 py-2 mb-3" type="file" (change)="fileUpload($event)" placeholder="Upload file" accept=".txt">
+    <p *ngIf="localStorageFunc() == 'true'" style='color: red'>Upload in progress please wait</p>
+</div>
+
+<h3 *ngIf="status">Successfully Uploaded</h3>

@@ -1,0 +1,63 @@
+
+  <!--td  contenteditable='false'>{{hotel.id}}</td-->
+  
+  <h3 text-align: style='text-align: center;font-weight: bold;'> Update hotel details</h3>
+  <table class="table" >
+      <tr >
+          <td>Id</td>
+         <td>
+          {{hotel.id}}
+         </td>
+    </tr>
+   <tr >
+     <td >name</td>
+    <td>
+     <input class="form-control"   type="text"  [(ngModel)]="hotel.name" title={{hotel.name}}>
+    </td>
+    </tr>
+    <tr>
+     <tr >
+           <td>address</td>
+               <td>
+          <input class="form-control"   type="text" min="1" [(ngModel)]="hotel.address" title={{hotel.address}} >
+        </td>
+    </tr>
+  <tr>
+      <tr >
+          <td >city</td>
+         <td>
+    <input class="form-control"   type="text" min="1" [(ngModel)]="hotel.city" title={{hotel.city}} >
+    </td>
+  </tr>
+  <tr>
+      <tr >
+          <td >country</td>
+         <td>
+    <input class="form-control"   type="text" min="1" [(ngModel)]="hotel.country" title={{hotel.country}}>
+  </td>
+  </tr>
+  <tr>
+      <tr >
+          <td >chain</td>
+         <td>
+    <input class="form-control"   type="text" min="1" [(ngModel)]="hotel.chain" title={{hotel.chain}}>
+        </td> 
+    </tr>
+    <tr>
+            <tr >
+                <td >chainName</td>
+               <td>
+          <input class="form-control"   type="text" min="1" [(ngModel)]="hotel.chainName" title={{hotel.chainName}}>
+        </td>
+    </tr>
+  <tr>
+      <tr >
+          <td >brand</td>
+         <td>
+    <input class="form-control"   type="text" min="1" [(ngModel)]="hotel.brand" title={{hotel.brand}}>
+  </td></tr>
+  
+  
+  </table>
+  <button mat-button matDialogClose="close"  class="btn btn-primary" (click)="onCloseClick()" style='float: right;margin: 5px'>Cancel</button>
+  <button mat-button matDialogClose="close"  class="btn btn-primary" (click)="onUpdateClick()" style='float: right;margin: 5px'>Confirm update</button>

@@ -1,0 +1,58 @@
+<h2>GA SourceMedium Mapping</h2>          
+            <div class="row" >
+              <div class="col-12 my-3">
+                <div class="custom-control custom-radio custom-control-inline  ">
+                  <input type="radio" id="customRadioInline1" name="customRadioInline" class="custom-control-input"  (click)="getMissingNetworks()">
+                  <label class="custom-control-label" for="customRadioInline1">Get list of SourceMediums without channel_group, channel mapping</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" id="customRadioInline2" name="customRadioInline" class="custom-control-input" checked="" >
+                  <label class="custom-control-label" for="customRadioInline2">Update SourceMedium channel mapping
+                  </label>
+                </div>
+              </div>  
+            </div>
+
+            <div>
+        
+                        <div>
+                              <table datatable id="table1" [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class=" table-striped table-bordered text-left " style='table-layout:fixed;width: 100%'>
+                                  <thead >
+                                <tr>
+    
+                                  <th >SourceMedium</th>
+                                  <th >ChannelGroup</th>
+                                  <th >ChannelName</th>
+                                  <th >Paid/Unpaid</th>
+                                  <th >Action</th>
+                                  
+                                </tr>
+                              </thead>
+                              <tbody >
+                                <tr *ngFor="let gaMappedChannel of gaMappedChannels; let i= index;">
+                                  <!--td>{{networkNames}}</td-->
+                                                              
+                                  <td>{{gaMappedChannel.dim_sourcemedium}}</td>
+                                  <td>{{gaMappedChannel.channel_group}}</td>
+                                  <td>{{gaMappedChannel.channel_name}}</td>
+                                  <td>{{gaMappedChannel.paid_unpaid}}</td>
+                                  <td><button  mat-button   class="btn btn-primary" (click)="onUpdateClick(gaMappedChannel.dim_sourcemedium)" style='margin: 0px; margin-top: 0px'>Update</button>
+                                  </td>
+
+                                  <!--td>{{ networkNames}</td-->
+                                </tr>
+                                <tr *ngIf=false>
+                                  <td colspan="2" class="no-data-available">No matching record found</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                           </div>
+                           <div *ngIf='loader' class="loader"></div>
+           
+                      <!--button  mat-button   class="btn btn-primary" (click)="onUpdateClick()" style='margin: 1px; margin-top: 5px'>Update</button-->
+                                           
+                     
+            </div>
+
+            
+            

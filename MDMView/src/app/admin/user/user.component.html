@@ -1,0 +1,49 @@
+<div>
+  <!------  <button type="button" [disabled]='' class="btn btn-primary px-3 py-1" data-toggle="modal" title="User Details" (click)="getUserDetails(user_id)" style='width: 80px;display: block;margin-left: 800px;'>{{user_id}}</button> ---->          
+<a routerLink="/admin/getUserDetails">{{user_id}}</a>  
+</div> 
+<br>
+<div class="container-fluid">
+  <td>
+    <button type="button" [disabled]='' class="btn btn-primary px-3 py-1" data-toggle="modal" (click)="addNewUser()" style='width: 80px;display: block;margin-left: 800px;'><i class="fa fa-user-plus" style="font-size:24px;color:aliceblue"></i></button> 
+  </td>
+    <p *ngIf=false>Not a valid User-ID.</p>
+
+<div class="container-fluid">
+          
+
+ <div class="container-fluid">
+  
+  <!--table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class=" table-striped table-bordered text-left " style='table-layout:fixed;width: 100%'-->
+  <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class=" table-striped table-bordered text-left  " style='table-layout:fixed;width: 100%'>
+
+  <thead >
+
+  <tr>
+  
+  <th >User-ID</th>
+  <th >User-Name</th>
+  <th >Password</th>
+  <th >Role</th>
+  <th >Action</th>
+  
+  
+  </tr>
+  </thead>
+  <tbody >
+  <tr *ngFor="let list of user;let i= index;">
+  <td>{{ list.user_id }}</td>
+  <td>{{ list.user_name }}</td>
+  <td>{{ list.password }}</td>
+  <td>{{ list.role }}</td>
+  <td>    
+    <button type="button" [disabled]='' class="btn btn-primary px-3 py-1" data-toggle="modal" (click)="updateUser(i)" style='width: 50px;display: block;margin: auto;'><i class="fa fa-pencil" aria-hidden="true"></i></button>
+  <br>
+   <button type="button" [disabled]='' class="btn btn-primary px-3 py-1" data-toggle="modal" (click)="deleteUser(list.user_id)" style='width: 50px;display: block;margin: auto;'><i class="fa fa-trash" aria-hidden="true"></i></button>
+  </td>
+  </tr>
+  <tr *ngIf=false>
+  <td colspan="2" class="no-data-available">No record found</td>
+  </tr>
+  </tbody>
+  </table>

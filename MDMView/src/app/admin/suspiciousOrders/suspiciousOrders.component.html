@@ -1,0 +1,51 @@
+
+
+<div class="container-fluid">
+<h2>Suspicious Orders</h2> 
+
+
+  <div>
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class=" table-striped table-bordered text-left  " style='table-layout:fixed;width: 100%'>
+    <thead >
+      <tr>
+       
+        <th >Order No</th>
+        <th >Product Type</th>
+        <th >First Cancellation Date</th> 
+        <th >Status</th>           
+        <th >Payment Amount Usd</th>           
+        <th >Action</th>
+      </tr>
+    </thead>
+    <tbody >
+      <tr *ngFor="let suspiciousOrder of suspiciousOrders; let i= index;">
+        <td>{{ suspiciousOrder.order_no }}</td>
+        <td>{{ suspiciousOrder.product_type }}</td>
+        <td>{{ suspiciousOrder.dim_firstcancellation_date }}</td>
+        <td>{{ suspiciousOrder.status }}</td> 
+        <td>{{ suspiciousOrder.payment_amount_usd }}</td>                  
+
+          <td>
+          <button [disabled]="suspiciousOrder.isDisabled" type="button" [disabled]='' class="btn btn-primary px-3 py-1" data-toggle="modal" (click)="editSuspiciousOrder(i)" style='width: 200px;display: block;margin: auto;'>Mark As Suspicious</button> 
+          </td>
+      </tr>
+      <tr *ngIf="norecordsFlag==0">
+        <td colspan="6" class="no-data-available">No matching record found</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

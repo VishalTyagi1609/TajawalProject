@@ -1,0 +1,89 @@
+
+<h3 text-align: style='text-align: center;font-weight: bold;'> For network : {{networkName}}</h3>
+
+<div class="row">
+    <div class="col-12 my-3">
+        <!--div class="custom-control custom-radio custom-control-inline"-->
+        <mat-form-field class="example-full-width">
+            <input readonly #datePick matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Choose a date" >
+            <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+            <mat-datepicker #picker (selectedChanged)="onDateeSelect()"></mat-datepicker>
+          </mat-form-field>
+        <!--/div-->
+      <div *ngIf='typeFlag' class="custom-control custom-radio custom-control-inline  ">
+          <!--label for="Enter search string">Select Network Type</label-->
+          <table>
+          <tr>
+          <select class="custom-select" (change)="onTypeSelect()" #networkType>
+            <option>Select Type</option>
+            <option *ngFor="let list of networkTypes" [value]="list">
+              {{list}}
+            </option>                 
+          </select>
+          </tr>
+          <tr>
+          <div *ngIf='selectTypeFlag'><p style='color: red'>Please select Type</p></div>
+          </tr>
+          </table>
+      </div>
+      <div *ngIf='kpiFlag' class="custom-control custom-radio custom-control-inline">
+          <!--label for="Enter search string">Select Kpi</label-->
+          <table>
+          <tr>
+          <select class="custom-select" (change)="onKpiSelect()" #networkKpi>
+            <option>Select KPI</option>
+            <option *ngFor="let list of networkKpis" [value]="list">
+              {{list}}
+            </option>                 
+          </select>
+          </tr>
+          <tr>
+              <div *ngIf='selectKpiFlag'><p style='color: red'>Please select KPI</p></div>
+          </tr>
+          </table>
+      </div>
+    </div>
+  </div>
+
+
+  <i *ngIf="tableFlag" style="color:purple">* (All metric value fields are mandatory) Please enter a valid number > 0 and < 100</i>
+      
+  <div *ngIf='tableFlag' id="xTable" style="overflow: auto;height: 400px;"> 
+  <table  class="" >
+      <table class="table table-striped table-bordered text-center " style="table-layout:fixed "   >
+          <thead >
+            <tr>         
+              <th >Group</th>
+              <th >Product</th>
+              <th >Mobile OS</th>
+              <th >MetricName</th>
+              <th >MetricValue </th>
+              
+            </tr>
+          </thead>
+          <tbody >
+            <tr *ngFor="let channel of networklList; let i= index;">
+              
+              <td>{{ channel.brand }}</td>
+              <td>{{ channel.product }}</td>
+              <td>{{ channel.mobile_os }}</td>
+              <td>{{ channel.metric_name }}</td>
+              <td>
+                  <input class="form-control" type="number" style="width:80px;" placeholder=0 (keyup)="validateValue(i)" [(ngModel)]="channel.value" >
+              </td>
+                                                    
+                
+            
+            <tr *ngIf=false>
+              <td colspan="2" class="no-data-available">No matching record found</td>
+            </tr>
+          </tbody>
+        </table>
+         
+  
+  
+  </table>
+  </div>
+  
+  <button mat-button matDialogClose="close"  class="btn btn-primary" (click)="onCloseClick()" style='float: right;margin: 5px ; width: 80px'>Cancel</button>
+  <button *ngIf='addButtonFlag' mat-button matDialogClose="close"  class="btn btn-primary" (click)="onAddClick()" style='float: right;margin: 5px;width: 80px '>Add   </button>

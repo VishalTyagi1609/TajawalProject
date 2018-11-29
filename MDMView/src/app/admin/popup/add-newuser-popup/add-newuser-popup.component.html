@@ -1,0 +1,33 @@
+  <!--td  contenteditable='false'>{{hotel.id}}</td-->
+  
+  <h3 text-align: style='text-align: center;font-weight: bold;'>Add New User</h3>
+  <table class="table" >
+      <tr >
+          <td>User Id</td>
+         <td>
+            <input class="form-control"   type="text" min="1" [(ngModel)]="target.user_id" title={{target.user_id}} >
+         </td>
+    </tr>
+   <tr >
+     <td >User Name</td>
+    <td>
+     <input class="form-control"   type="text"  [(ngModel)]="target.user_name" title={{target.user_name}}>
+    </td>
+    </tr>
+    <tr>
+     <tr >
+           <td>Password</td>
+        <td>
+          <input class="form-control"   type="text" min="1" [(ngModel)]="target.password" title={{target.password}} >
+        </td>
+    </tr>
+  <tr>
+      <tr >
+          <td >Role</td>
+         <td>
+    <input class="form-control"   type="text" min="1" [(ngModel)]="target.role" title={{target.role}} >
+    </td>
+  </tr>
+  </table>
+  <button mat-button matDialogClose="close"  class="btn btn-primary" (click)="onCloseClick()" style='float: right;margin: 5px'>Cancel</button>
+  <button mat-button matDialogClose="close"  class="btn btn-primary" (click)="addNewUser()" style='float: right;margin: 5px'>Add</button>

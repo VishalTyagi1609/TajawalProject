@@ -1,0 +1,33 @@
+  <!--td  contenteditable='false'>{{hotel.id}}</td-->
+  
+  <h3 text-align: style='text-align: center;font-weight: bold;'> Update User Details</h3>
+  <table class="table" >
+      <tr >
+          <td>User Id</td>
+         <td>
+            <input class="form-control"   type="text" min="1" [(ngModel)]="user.user_id" title={{user.user_id}} >
+         </td>
+    </tr>
+   <tr >
+     <td >User Name</td>
+    <td>
+     <input class="form-control"   type="text"  [(ngModel)]="user.user_name" title={{user.user_name}}>
+    </td>
+    </tr>
+    <tr>
+     <tr >
+           <td>Password</td>
+               <td>
+          <input class="form-control"   type="text" min="1" [(ngModel)]="user.password" title={{user.password}} >
+        </td>
+    </tr>
+  <tr>
+      <tr >
+          <td >Role</td>
+         <td>
+    <input class="form-control"   type="text" min="1" [(ngModel)]="user.role" title={{user.role}} >
+    </td>
+  </tr>
+  </table>
+  <button mat-button matDialogClose="close"  class="btn btn-primary" (click)="onCloseClick()" style='float: right;margin: 5px'>Cancel</button>
+  <button mat-button matDialogClose="close"  class="btn btn-primary" (click)="updateUser()" style='float: right;margin: 5px'>Confirm update</button>

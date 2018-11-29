@@ -1,0 +1,36 @@
+<style>
+  table, th, td {
+      border: 1px solid black;
+  }
+  </style>
+<div class="container-fluid">
+ 
+<table  class=" table-striped table-bordered text-left " style='table-layout:fixed;width: 100%' >
+  <tr>
+      <th class="text-center" colspan="3" >User-Details</th>
+    </tr>
+    <tr>
+      <td>USER ID</td>
+      <td>{{user_id}}</td>
+      <td></td>
+
+    </tr>
+    <tr>
+      <td>Username</td>
+      <td>{{user_name}}</td>
+      <td></td>
+    </tr> 
+    <tr>
+        <td>Password</td>
+        <td>{{password}}</td>
+        <td> <button type="button" [disabled]='' class="btn btn-primary px-3 py-1" data-toggle="modal" title="Get User List" (click)="onUpdateUserPassword()" style='width: auto;display: block;margin: auto;'>Update Password</button> </td>
+      </tr> 
+      <tr>
+          <td>Role</td>
+          <td>{{role}}</td>
+          <td></td>
+        </tr>
+
+
+</table>
+</div>

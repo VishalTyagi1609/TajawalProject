@@ -1,0 +1,53 @@
+
+
+
+<p>
+    <button type="button" class="btn waves-effect waves-light blue" (click)="rerender()">
+      Rerender
+    </button>
+  </p>
+
+<h1>Test DataTable</h1>
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>City</th>
+        <th>Country</th>
+        <th>Chain</th>
+        <th>Brand</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let hotel of hotels">
+        
+          <td style="width:200px;" contenteditable='false'>{{hotel.id}}</td>
+          <td style="width:100px;">
+            <input class="form-control" style="width:160px;" type="text" min="1" [(ngModel)]="hotel.name" >
+          </td>
+          <td width="100">
+            <input class="form-control" style="width:80px;" type="text" min="1" [(ngModel)]="hotel.city" >
+          </td>
+          <td>
+            <input class="form-control" style="width:50px;" type="text" min="1" [(ngModel)]="hotel.country" >
+          </td>
+          <td>
+            <input class="form-control" style="width:60px;" type="text" min="1" [(ngModel)]="hotel.chain" >
+          </td>
+          <td>
+            <input class="form-control" style="width:50px;" type="text" min="1" [(ngModel)]="hotel.brand" >
+          </td>
+                    
+          <td>
+          <button type="button"  class="btn btn-primary px-3 py-1" data-toggle="modal" >update</button> 
+          </td>
+      </tr>
+      <tr *ngIf="hotels?.length == 0">
+        <td colspan="2" class="no-data-available">No data!</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
